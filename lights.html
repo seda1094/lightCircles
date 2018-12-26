@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<script
+		  src="https://code.jquery.com/jquery-3.3.1.js"
+		  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+		  crossorigin="anonymous">
+		  	
+		</script>
+	<title></title>
+	<style>
+		body{
+			margin: 0;
+			padding: 0;
+			background: black;
+		}
+		.glowing
+		{
+			position: absolute;
+			/*transform: translate(-50%,-50%);*/
+	/*		width: 100px;
+			height: 100px;*/
+		}
+		.glowing span{
+			position: absolute;
+			border-radius: 50%;
+			box-sizing: border-box;
+		}
+		/*.glowing span:before{
+			content:'';
+			position: absolute;
+			top:50%;
+			left: -5px;
+			width: 20px;
+			height: 20px;
+			background: #ff0;
+			border-radius: 50%;
+		}*/
+		.glowing span:nth-child(1){
+			/*top:0;
+			left: 0;
+			right: 0;
+			bottom: 0;*/
+			animation: animate 4s linear infinite;
+		}
+		/*.glowing span:nth-child(1):before{
+			background: rgba(134,255,0,1);
+			box-shadow: 0 0 20px rgba(134,255,0,1),
+						0 0 40px rgba(134,255,0,1),
+						0 0 60px rgba(134,255,0,1),
+						0 0 80px rgba(134,255,0,1),
+						0 0 4px rgba(134,255,0,0.1);
+		}*/
+		.glowing span:nth-child(2){
+			/*top:20px;
+			left: 20px;
+			right: 20px;
+			bottom: 20px;*/
+			animation: animate-myreverse 4s linear infinite;
+		}
+		
+		/*.glowing span:nth-child(2):before{
+			background: rgba(255,214,0,1);
+			box-shadow: 0 0 20px rgba(255,214,0,1),
+						0 0 40px rgba(255,214,0,1),
+						0 0 60px rgba(255,214,0,1),
+						0 0 80px rgba(255,214,0,1),
+						0 0 4px rgba(255,214,0,0.1);
+		}*/
+		.glowing span:nth-child(3){
+			/*top:40px;
+			left: 40px;
+			right: 40px;
+			bottom: 40px;*/
+			animation: animate 2s linear infinite;
+		}
+		/*.glowing span:nth-child(3):before{
+			background: rgba(0,226,255,1);
+			box-shadow: 0 0 20px rgba(0,226,255,1),
+						0 0 40px rgba(0,226,255,1),
+						0 0 60px rgba(0,226,255,1),
+						0 0 80px rgba(0,226,255,1),
+						0 0 4px rgba(0,226,255,0.1);
+		}*/
+		.circle{
+			/*display: none;*/
+			position: absolute;
+/*			width: 10px;
+			height: 10px;
+*/			border-radius: 50%;
+			background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+			animation: animate 1s linear infinite;
+		}
+		.circle:nth-child {
+			/*display: none;*/
+			position: relative;
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+			animation: animate 1s linear infinite;
+		}
+		.circle span{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+		}
+		.circle span:nth-child(1){
+			filter: blur(5px);
+		}
+		.circle span:nth-child(2){
+			filter: blur(10px);
+		}
+		.circle span:nth-child(3){
+			filter: blur(25px);
+		}
+		.circle span:nth-child(4){
+			filter: blur(50px);
+		}
+@keyframes animate
+{
+	0%
+	{
+		transform: rotate(0deg);
+	}
+	100%
+	{
+		transform: rotate(360deg);
+	}
+}
+@keyframes animate-myreverse
+{
+	0%
+	{
+		transform: rotate(360deg);
+	}
+	100%
+	{
+		transform: rotate(0deg);
+	}
+}
+/*4.29*/
+	</style>
+</head>
+<body>
+<div id="main">
+<!-- 		<div class="glowing">
+		<span>
+			<div class="circle">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div> 
+		</span>
+		<span>
+			<div class="circle">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div> 
+		</span>		
+		<span>
+			<div class="circle">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div> 
+		</span>
+
+	</div> -->
+</div>
+	<script>
+	var i = 0;
+function clickOnMe(evt){
+	i++;
+	$( "#main" ).append('<div class="glowing glowing'+i+'"><span><div class="circle circle'+i+'"><span></span><span></span><span></span><span></span></div></span><span><div class="circle circle'+i+'"><span></span><span></span><span></span><span></span></div> </span>		<span><div class="circle circle'+i+'"><span></span><span></span><span></span><span></span></div> </span></div>');
+	var myclass = ".glowing"+i;
+	var myCircle = ".circle"+i;
+	// $(".circle").css("display", "block"); 
+	$(myclass).css("left", evt.pageX + "px");  
+	$(myclass).css("top", evt.pageY + "px");  
+	// alert(evt.pageX + " " + evt.pageY);
+	// circle.style.left = evt.pageX + "px";
+	// circle.style.top = evt.pageY + "px"; 
+	// alert(circle.style.top);
+	// console.log(evt.pageX + " " +evt.pageY);     
+	var y = $(myclass).offset().top;
+	// alert($(myclass).offset().top);
+	var x = $(myclass).offset().left;
+	// alert($(myclass).offset().left);
+
+    var size = 20;
+    var wdtHgt = 5;
+   	var id = setInterval(frame, 100);
+function frame() {
+	// alert("hello");
+	// alert(x + " "+y);
+    if (x >= 1000 || y >= 1000) {
+      clearInterval(id);
+    } else {
+     // var nums = [0.5,-0.5,-0.5,-0.5];
+    	// var itemX = nums[Math.floor(Math.random()*nums.length)];
+     //    var itemY = nums[Math.floor(Math.random()*nums.length)];
+        
+
+     //  x+=itemX; 
+     //  y+=itemY;
+
+   
+      if (size < 25) 
+      {
+      	size+=1;
+      	// alert(size);
+      	$(myCircle).css('width', size+'px');
+      	$(myCircle).css('height', size+'px');
+      }
+      //////////////////
+      // $(".glowing span:nth-child(1)" ).css( {"top": 20+wdtHgt+"px", 
+						// 					 "left":20+wdtHgt+"px",
+						// 					 "right":20+wdtHgt+"px",
+						// 					 "bottom":20+wdtHgt+"px",});
+      // $(".glowing span:nth-child(1)" ).css( {"top": 40+wdtHgt+"px", 
+						// 					 "left":40+wdtHgt+"px",
+						// 					 "right":40+wdtHgt+"px",
+						// 					 "bottom":40+wdtHgt+"px",});
+      // $(".glowing span:nth-child(1)" ).css( {"top": 60+wdtHgt+"px", 
+						// 					 "left":60+wdtHgt+"px",
+						// 					 "right":60+wdtHgt+"px",
+						// 					 "bottom":60+wdtHgt+"px",});
+      // wdtHgt += 10;
+
+//////////////
+   //    $(myclass).css("left", x + "px"); 
+	  // $(myclass).css("top", y + "px");
+
+	  // alert($(myclass).offset().top);
+
+      // circle.style.top = x + 'px'; 
+      // circle.style.left = y + 'px'; 
+    }
+  }
+
+}
+
+window.onclick = clickOnMe;
+
+
+</script>
+</body>
+</html>
